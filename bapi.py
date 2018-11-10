@@ -13,8 +13,6 @@ blynk = BlynkLib.Blynk(BLYNK_AUTH)
 def my_read_handler_temp():
     h, t = dht.read_retry(dht.DHT22, 4)
     blynk.virtual_write(1, t)
-    #print('Current V1 value: {}'.format(h))
-    print "Temp Read"
 
 @blynk.VIRTUAL_READ(2)
 def my_read_handler_humitidy():
