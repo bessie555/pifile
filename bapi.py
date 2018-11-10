@@ -9,7 +9,7 @@ BLYNK_AUTH = '0308f332bf72472c9c802ba9d1f5046a'
 blynk = BlynkLib.Blynk(BLYNK_AUTH)
 
 # Register Virtual Pins
-@blynk.VIRTUAL_WRITE(1)
+@blynk.VIRTUAL_READ(1)
 def my_write_handler(value):
     h, t = dht.read_retry(dht.DHT22, 4)
     blynk.virtual_write(1, t)
