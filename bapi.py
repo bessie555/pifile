@@ -24,9 +24,9 @@ def my_read_handler_humitidy():
 def my_read_handler_time():
     blynk.virtual_write(3, time.ticks_ms() // 1000)
 
-@blynk.VIRTUAL_READ(4)
-def my_read_handler_test():
-    blynk.virtual_write(4, 100)
+@blynk.VIRTUAL_WRITE(4)
+def my_write_handler_test(value):
+    print('Received: {}'.format(value))
 
 # Start Blynk (this call should never return)
 blynk.run()
