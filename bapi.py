@@ -10,15 +10,19 @@ blynk = BlynkLib.Blynk(BLYNK_AUTH)
 
 # Register Virtual Pins
 @blynk.VIRTUAL_READ(1)
-def my_write_handler(value):
+def my_read_handler_temp(value):
     h, t = dht.read_retry(dht.DHT22, 4)
     blynk.virtual_write(1, t)
     #print('Current V1 value: {}'.format(h))
 
 @blynk.VIRTUAL_READ(2)
-def my_read_handler():
+def my_read_handler_humitidy():
     h, t = dht.read_retry(dht.DHT22, 4)
     blynk.virtual_write(2, h)
+
+@blynk.VIRTUAL_READ(3)
+def my_read_handler_time():
+    blynk.virtual_write(3, time.ticks_ms() // 1000)
 
 # Start Blynk (this call should never return)
 blynk.run()
